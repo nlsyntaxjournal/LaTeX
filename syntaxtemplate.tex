@@ -1,0 +1,328 @@
+%%% TO TURN THIS DOCUMENT INTO A MANUSCRIPT, START BY SAVING IT WITH A NEW NAME; THEN FOLLOW THE INSTRUCTIONS GIVEN THROUGHOUT, IN THE COMMENTS THAT BEGIN WITH "%%%" AND ARE IN ALL CAPS. Other comments are merely informative. 
+
+%%% You may notice that some of the information you enter in this document is suppressed in the output (e.g., author names and contact information). This is because the output is customized for use in the review process, not publication. Please enter the information anyway. This source file will not be forwarded to reviewers.
+
+\documentclass[letterpaper,12pt, twoside]{article}
+%%% IF YOU NEED TO PRINT ON A4 PAPER INSTEAD OF 8.5 X 11 INCH PAPER, REPLACE THE OPTION "letterpaper" WITH "a4paper."
+
+
+\usepackage{syntaxrev}  
+%%% YOU NEED THE FILE "syntaxrev.sty" (or one of the alternate versions) IN ORDER TO TYPESET THIS DOCUMENT IN LATEX.
+%%% PLEASE DO NOT ALTER OR CUSTOMIZE THIS STYLE FILE -- USE IT AS IS. 
+
+%%To load one of the alternate versions of the style file (if your document involves pstricks/directly embedded postscript, or if you want to use xetex):
+%\usepackage{syntaxrev-dvips}  
+%\usepackage{syntaxrev-xelatex}  
+
+
+%The pdtex and latex+dvi versions of the style file load Times fonts. If using xelatex, we can recommend the Stix fonts (https://www.stixfonts.org), since they are what is used for our published articles:
+%\usepackage{mathspec}  
+%\setmathfont(Symbols){STIXTwoMath}
+%\setmathfont(Digits,Latin,Greek)[Numbers=OldStyle]{STIXTwoText}
+%\setmathfont[range={"0000-"FFFF}, Numbers=OldStyle]{STIXTwoText}
+%\setmainfont[Mapping=tex-text, Numbers=OldStyle]{STIXTwoText}
+
+%With traditional latex, you can override the style file by loading the stix2 package afterwards:
+%\usepackage{stix2}
+
+% IPA symbols:
+\usepackage{tipa} %http://tug.ctan.org/tex-archive/fonts/tipa/
+
+% linguistic trees: 
+\usepackage{qtree} %http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/
+
+% linguistic examples:
+\usepackage{linguex} %http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/
+
+% suppresses the dash in references to subexamples (linguex.sty)
+\renewcommand{\firstrefdash}{}
+\renewcommand{\secondrefdash}{}
+
+% bibliography (commented out here because this template was originally composed in ignorance of BibTeX and has not yet been revised):
+%\usepackage{natbib}
+%\bibpunct[:]{(}{)}{,}{a}{}{,}
+   %%or%%
+%\setcitestyle{round,aysep={},notesep={:}}
+%\bibliographystyle{syntax-fixed-DH}
+
+
+\begin{document}
+%Ignore this:
+\syntaxfirstpage{\textit{Syntax} 0:0, Month Year, 0--0}
+
+%%% ENTER TITLE, AUTHOR AND CONTACT INFORMATION; the author and contact info do not appear at all in the review version of the manuscript
+\title{Full Title, in Title Case: Possibly Including a Subtitle, with No Line Break in Between}
+\author{FirstName1 LastName1, FirstName2 LastName2, and FirstName3 LastName3}
+\contactinfo{
+Author 1\\
+Institution 1\\
+Address \\
+Country \\\
+
+who@where.wh \\\
+
+Author 2 \\
+Institution 2\\
+Address\\
+Country \\\
+
+who@where.wh
+}
+
+\maketitle
+
+%%% ENTER A BRIEF TITLE: this appears in the running head
+\brieftitle{Brief Title for the Paper, in Title Case}
+
+\runninghead
+
+
+%%% ENTER AN ACKNOWLEDGMENT, which will be the first, unnumbered footnote:
+\ackfootnote{We would like to thank ...}
+
+
+%%% REPLACE ABSTRACT TEXT WITH YOUR OWN ABSTRACT
+\noindent \textit{Abstract}. The abstract is 150 words or less. This style template is meant to be used to produce \linebreak[1]LaTeX manuscripts for submission to the journal \emph{Syntax}. Besides already having the right high-level formatting to facilitate publication of your manuscript after acceptance, this template also provides guidelines for formatting the text you input in accordance with (a) \emph{Syntax} style and (b) the potential and limitations of LaTeX. Section \ref{secexs} deals with linguistic examples, section \ref{sectrees} with trees, and section \ref{secbib} with bibliographical citations. This document is not meant to replace the \emph{Syntax} author guidelines, which can be found on our web site at \emph{\href{http://www.blackwellpublishing.com/syntax}{http://www.blackwellpublishing.com/syntax}}.
+%(NB: The version of this style template that you are seeing is single-spaced, but the version you will use is double-spaced.)
+
+%%% REPLACE THE BODY WITH YOUR OWN TEXT, which may have up to three levels of structure: sections, subsections, and sub-subsections.
+
+%%% BEGIN BODY
+\section{Section Headings Are in Title Case: This Section Is about Linguistic Examples}\label{secexs}
+In this section,\footnote{This is the first regular numbered footnote, immediately following the acknowledgment. It is generally best if each section heading is followed by some text, rather than being followed immediately by a (lower-level) section heading. \label{padding}}  we give some sample linguistic examples using the \emph{Syntax}-recommended package \texttt{linguex}. 
+
+This section constitutes an incomplete and \emph{Syntax}-centric introduction to \texttt{linguex}. For a fuller introduction, please consult the \texttt{linguex} documentation, available at \emph{\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/}{http://tug.ctan.org/\linebreak[1]tex-archive/macros/latex/contrib/linguex/}}.
+
+Section \ref{secbasics} provides basic examples; section \ref{secjbg} explains how to add grammaticality judgments, brackets, and glosses; and section \ref{seccross} contains some notes on cross-referencing your own examples.
+
+\subsection{The Basics (Yes, Subheadings Are in Title Case, Too)}\label{secbasics}
+The basic \texttt{linguex} macro is \texttt{$\backslash$ex.}, which generates an autonumber for the example and indents the following text. Here is a simple example:
+
+\ex. Frivolous nonexistent pillows argue kindly.
+
+Note an important subtlety: the text you are now reading is a continuation of the paragraph that began before the example. It is not indented. In the LaTeX source file, this paragraph continuation is separated from the example by a single blank line---the minimum that  \texttt{linguex} requires in order to detect the end of the example environment. 
+
+Now here is an example containing subexamples, followed by a new paragraph:
+
+\ex. 
+\a. Frivolous nonexistent pillows argue kindly.
+\b. Colorless green ideas sleep furiously.
+
+
+This is a new paragraph, as indicated by the fact that it is indented. The way to obtain this indent when you are using \texttt{linguex} is to put \emph{two} or more blank lines after the example.\footnote{A consequence of the way  \texttt{linguex} interprets blank lines: no blank lines are permitted within a single numbered example, not even between subexamples.} 
+
+Finally, a small stylistic point. Complete sentences are always capitalized  and closed by a period, as in the examples above, but a phrase is neither capitalized nor punctuated:\footnote{This rule continues to hold for glossed examples as well; see the next section. If examples are written in a transcription that uses capitalization in a contrastive way (for example, \emph{T} for the Hindi voiceless retroflex stop versus \emph{t} for the dental stop) then do not capitalize those examples, but do continue to close complete sentences with a period.}
+
+\ex. colorless green ideas
+
+
+\subsection{Judgments, Brackets, and Glosses}\label{secjbg}
+
+
+
+Grammaticality judgments preceding the example are automatically aligned correctly, provided they are made up of the following characters: \texttt{*}, \texttt{?}, \texttt{\#}, \texttt{\%}.
+
+\ex. 
+\a. Frivolous nonexistent pillows argue kindly.
+\b. ?*Frivolous  kindly ideas argue nonexistent.
+
+
+Here is an example with labeled bracketing. There is a different macro, \texttt{$\backslash$exi.}, for this.
+
+\exi. [NP Colorless green ideas] [VP sleep furiously].
+
+And here is an example where some of the brackets are not labeled. It is best not to use \texttt{$\backslash$exi.} in this case, but instead to use the lower-level subscripting macro \texttt{$\backslash$I} for just the labeled brackets.
+
+\ex. \I[NP Colorless green ideas] [sleep furiously]. \hfill English (Chomsky 1965)
+
+Note that a right-aligned description and/or citation, if appropriate, can be added using \texttt{$\backslash$hfill}. (Generally, English examples do not need to be identified as such, unless for parallelism with neighboring examples from other languages.)
+
+Using \texttt{linguex} also makes it easy to do glossed examples. All you have to do is call the appropriate macro (\texttt{$\backslash$exg.}) and give it three lines of text: the example itself, a string of glosses,\footnote{Grammatical notations in glosses should be in \textsc{small caps}, using standard abbreviations. If your glosses include numerals, they should be the same height as the small-caps letters: the text size \texttt{$\backslash$footnotesize} will achieve the necessary size reduction.} and a translation. Vertical alignment between the first two lines is done automatically. 
+
+
+\exg. Widz\c{e}  szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}. \\ 
+see.\textsc{{\footnotesize 1}sg} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\ 
+ `I see six nice boys.' \hfill  Polish (Rappaport 2001:125)
+
+Just make sure that the first two lines contain the same number of elements, separated by spaces, and \texttt{linguex} will do the rest. 
+
+More precisely, the second line must consist of glosses for each and every element in the first line, in order. This rule continues to apply even when the first line contains elements that do not need glosses, such as brackets:
+
+\exig. Widz\c{e}  [DP szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}]. \\ 
+see.\textsc{{\footnotesize 1}sg} {} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\ 
+ `I see six nice boys.' \hfill  Polish (Rappaport 2001:125)
+
+The labeled left bracket here counts as an additional element in the first line, because it is separated from the adjacent words by spaces. If you compare the source code here with the previous example, you'll see that we've added a blank group (\texttt{\{\}}) to the second line, in order to give the new left bracket something to align with (namely, nothing). This is a trick. If we don't add this blank group, we get something very unfortunate:
+
+\exig. *Widz\c{e}  [DP szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}]. \\ 
+see.\textsc{{\footnotesize 1}sg} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\
+ 
+
+Even unlabeled left brackets should be separated from the following word by a space, just like with labeled left brackets. This ensures that glosses are aligned correctly with the element they are actually glossing. Compare \ref{bracketgood} with the subtly inferior \ref{bracketbad}.
+
+\ex. \label{bracket}
+\ag. Widz\c{e}  [ \hspace{-3pt}szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}]. \\ 
+see.\textsc{{\footnotesize 1}sg} {} \hspace{-3pt}six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\ 
+ `I see six nice boys.' \label{bracketgood}
+\bg. ?Widz\c{e}  [szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}]. \\ 
+see.\textsc{{\footnotesize 1}sg} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\ 
+ `I see six nice boys.' \label{bracketbad}
+
+(We've used another trick here to close up the space after the bracket in \ref{bracketgood}. Don't worry about reproducing this if it is a headache. And if you come up with a better solution, let us know!)
+
+The blank-group trick can also be used for other unglossed elements of the example other than brackets, such as traces. The sentence in \ref{raising} contains a trace.
+
+\exg. John$_i$ doesn't seem \emph{t}$_i$ to be himself. \\
+John	\textsc{neg} seem {} \textsc{inf} be \textsc{refl} \\
+`John doesn't seem to be himself.' \label{raising}
+
+
+One more use of grouping may be mentioned: if a single word needs a multiword gloss, as \emph{Teddyb\"aren} does in \ref{teddy}, put braces around the gloss and it will be treated as a single element.
+
+\exg. Er liebt den gro{\ss}en  Teddyb\"aren.\\
+he loves the big {teddy bear}\\
+`He loves the big teddy bear.'\label{teddy}
+
+
+\subsection{Cross-Referencing Examples in the Text}\label{seccross}
+Section \ref{crossmech} deals briefly with the mechanical aspects of referring to your own examples, and  section \ref{crosssty} raises a few points of style.
+
+\subsubsection{Mechanics (only sub-subheadings are in sentence case, rather than title case)}\label{crossmech}
+Citations of  examples \ref{bracket}--\ref{teddy} were included in the last section for illustrative purposes. The code \texttt{$\backslash$ref\{NAME\}} produces a (parenthesized) copy of the number of the example or subexample that contains the corresponding code \texttt{$\backslash$label\{NAME\}}. It is a good idea to pick short, descriptive label names, and to put \texttt{$\backslash$label\{NAME\}} at the \emph{end} of the example whenever possible.\footnote{In addition, \texttt{linguex} provides the contextually defined macros \texttt{$\backslash$Next}, \texttt{$\backslash$NNext}, \texttt{$\backslash$Last}, and \texttt{$\backslash$LLast}, which allow you to add cross-references in the vicinity of an example without going to the trouble of making a label for it. See the \texttt{linguex} documentation for more information.}
+
+The \texttt{linguex} system enables cross-references of the form \emph{(1), (1a), (1)--(2)}, but not, as far as we know, of the form \emph{(1a,b)} or \emph{(1a--c)}. Such references to multiple subexamples must be entered manually. Cross-references like \emph{(1a),(1b)} and \emph{(1a)--(1c)} are incorrect.
+
+
+\subsubsection{Style notes}\label{crosssty}
+
+Two quick points about referencing numbered examples:
+
+Do not begin a sentence with an example number. Instead of a sentence like \emph{(1) supports this claim}, write \emph{Example (1) supports this claim}.
+
+Phrases of the form \emph{example (1)} are not always acceptable, however. \emph{Example (1)}, \emph{principle (1)}, and \emph{rule (1a)} are acceptable; *\emph{hypothesis (1)}, *\emph{sentence/phrase (1)}, *\emph{schema (1)}, *\emph{discourse (1)}, and others are not acceptable. Instead, write \emph{the hypothesis in (1)}.
+
+
+
+
+
+\section{Linguistic Trees}\label{sectrees}
+The package \texttt{qtree}, preloaded in this template along with \texttt{linguex}, generates publication-quality trees from text input. The basic macro is \texttt{$\backslash$Tree}. Here is an example:\footnote{Both in trees and elsewhere, please notate bar levels using the mathematical prime symbol ($^\prime$), rather than the apostrophe (').\label{noteprime}}
+
+\ex.\Tree [.TP Spec [.T$^\prime$ {T} [.vP Subj [.v$^\prime$ v [.VP V Obj ] ] ] ] ]
+
+Trees should, as here, be embedded in a \texttt{linguex} example.  
+
+Your use of \texttt{qtree} will depend on various specific factors.  Full documentation for  \texttt{qtree} is available at \emph{\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}}.
+
+
+\section{Citations and References}\label{secbib}
+This third section, on bibliography,  focuses mainly on the relevant aspects of \emph{Syntax} style, as opposed to the mechanics of implementing them in LaTeX. \emph{Syntax} does not prescribe any particular implementation.  You are welcome to use BibTeX or a similar bibliographical program to manage and automate your citations and references within LaTeX, as long as you submit all the files necessary to typeset your document successfully using only a standard TeX distribution, and as long as the end result conforms to the style guidelines given here. But a more ``manual'' approach is also welcome and it simplifies the publishing process. BibTeX is included with most TeX distributions; consult the documentation for more information.
+
+
+Citations should use the author/date system. Note: \emph{Inoue 1976} is the name of a work, whereas \emph{Inoue (1976)} is the name of a person (followed, parenthetically, by a year in which that person published something). This distinction gives rise to parallel sets of formats:
+
+\ex. Outside of a parenthesis:
+\a. As explained in Inoue 1976, \ldots
+\b. As explained by Inoue (1976), \ldots
+
+\ex. In a parenthesis:
+\a. It has long been understood (at least since Inoue 1976) \ldots  {\footnotesize\bfseries \hfill [Preferred]}
+\b. It has long been understood (at least since Inoue's [1976] work) \ldots 
+
+\ex. Outside of a parenthesis, with a page citation (one page):\footnote{When a colon is used, it is not followed by a space: \emph{1976:27} is one continuous sequence.}
+\a. As explained in Inoue 1976 (p. 27), \ldots
+\b. As explained by Inoue (1976:27), \ldots	 {\footnotesize\bfseries \hfill [Preferred]}
+
+\ex. Outside of a parenthesis, with a page citation (multiple pages):\footnote{For all numerical ranges (both page ranges and other types), you should use an en dash (--) to separate the beginning and end numerals, rather than a hyphen (-). In LaTeX, an en dash is simply two hyphens in sequence. }
+\a. As explained in Inoue 1976 (pp. 27--30), \ldots
+\b. As explained by Inoue (1976:27--30), \ldots 	 {\footnotesize\bfseries \hfill [Preferred]}
+
+\ex. Outside of a parenthesis, with a footnote citation:\footnote{Parts of a work other than pages and footnotes are similarly abbreviated: \emph{chap.} for \emph{chapter}, \emph{sec.} for \emph{section}. Contrast  this with cross-references to your own sections and notes: these are written out in full---for example, \emph{section \ref{secbib}}, \emph{note \ref{noteprime}}.}
+\a. As explained in Inoue 1976 (n. 5), \ldots
+\b. As explained by Inoue (1976:n. 5), \ldots	 {\footnotesize\bfseries \hfill [Preferred]}
+
+\ex. In a parenthesis, with a page citation:
+\a. It has long been understood (at least since Inoue 1976:27) \ldots  {\footnotesize\bfseries \hfill [Preferred]}
+\b. It has long been understood (at least since Inoue's [1976:27] work) \ldots 
+
+\ex. In a parenthesis, with a footnote citation:
+\a. It has long been understood (at least since Inoue 1976:n. 5) \ldots {\footnotesize\bfseries \hfill [Preferred]}
+\b. It has long been understood (at least since Inoue's [1976:n. 5] work) \ldots   
+
+Inside parentheses, it is generally preferred to cite the work rather than the author, while outside parentheses, when a page or note number is being cited, author citations are preferable.
+
+The references list is the final, unnumbered section of the document. Please refer to the sample list below for how to format different types of references. Unlike this list, your list should be in alphabetical order by author's surname (and should, of course, omit the boldfaced labels at the end of each sample reference). Initial lowercase words in a surname (such as \emph{den} in \emph{den Dikken}) should be treated as invisible for alphabetization purposes.
+
+All works listed in the references section should be cited at least once in the text, and all works cited should be listed in the references. Please double-check. 
+
+
+
+%%% END BODY
+
+%%% BEGIN REFERENCES
+
+\section*{References}
+\begin{list}{}{\leftmargin  0.25in
+               \itemindent -0.25in \itemsep 0pt \parsep 0pt }
+
+\item
+den Dikken, M. 2006. \emph{Relators and linkers: The syntax of predication, predicate inversion, and copulas}. Cambridge, MA: MIT Press. {\footnotesize\bfseries \hfill [Book]}
+
+\item Nelson, D. \& I. Toivonen. 2003. Counting and the grammar: Case and numerals in
+Inari Saami. In \emph{Generative approaches to Finnish
+and Saami linguistics}, ed. D. Nelson \& S. Manninen, 321--341. Stanford, CA: CSLI Publications.
+{\footnotesize\bfseries \hfill [Chapter in book]}
+
+\item
+Miyagawa, S. 1989. \emph{Structure and case marking in Japanese} (Syntax and Semantics 22). San Diego, CA: Academic Press. {\footnotesize\bfseries \hfill [Book in series]}
+
+\item
+Guilfoyle, E., H. Hung \& L. Travis. 1992. Spec of IP and Spec of VP: Two subjects in Austronesian languages. \emph{Natural Language \& Linguistic Theory} 10:375--414. {\footnotesize\bfseries  \hfill \hbox{[Article in journal]}}
+
+\item
+den Dikken, M. In press. \emph{Relators and linkers: The syntax of predication, predicate inversion, and copulas.} Cambridge, MA: MIT Press.  {\footnotesize\bfseries \hfill [Forthcoming book]}
+
+\item
+Tomioka, S. To appear (a). The Japanese existential possession: A case study of pragmatic disambiguation. \emph{Lingua.}  \hfill {\footnotesize\bfseries\hbox{[Forthcoming article]}}
+
+\item
+Inoue, K. 1976. \emph{Henkei punpoo to nihongo} [Transformational grammar and the Japanese language]. Tokyo: Taishukan.  {\footnotesize\bfseries \hfill \hbox{[Book with title in a language other than English]}}
+
+\item
+Grewendorf, G. 1983. Reflexivierung in deutschen A.c.I.-Konstruktionen: Kein transformationsgrammatisches Dilemma mehr [Reflexivization in German AcI constructions: No longer a dilemma for transformational grammar]. \emph{Groninger Arbeiten zur germanistischen Linguistik} 23:120--196.{\footnotesize\bfseries \hfill [Article with title in a language other than English]}
+
+\item
+Chandra, P. 2007a. (Dis)Agree: Movement and agreement reconsidered. Ph.D. dissertation, University of Maryland, College Park. {\footnotesize\bfseries \hfill [Dissertation]}
+
+\item
+Chandra, P. 2007b. Long-distance agreement in Tsez: A reappraisal. In \emph{University of 
+Maryland Working Papers in Linguistics 15}, ed. A. Conroy, C. Jing, C. Nakao \& E. 
+Takahashi, 47--72. College Park, MD: University of Maryland Working Papers in Linguistics. \\
+  {\footnotesize\bfseries \hspace*{238pt} \hbox{[Paper in proceedings or working papers volume]}}
+
+\item
+Fortin, C. R. 2004. Minangkabau causatives: Evidence for the l-syntax/s-syntax division. Talk presented at AFLA 2004, ZAS Berlin, April.  {\footnotesize\bfseries \hfill [Talk given at conference, not in proceedings]}
+
+\item
+Burzio, L. 1997. Cycles, non-derived-environment blocking, and correspondence. Ms., Johns Hopkins University, Baltimore, MD.  {\footnotesize\bfseries \hfill [Unpublished manuscript]}
+
+\item
+Chandra, P. 2007b. Long-distance agreement in Tsez: A reappraisal. In \emph{University of 
+Maryland \linebreak[4]Working Papers in Linguistics 15}, ed. A. Conroy, C. Jing, C. Nakao \& E. 
+Takahashi, 47--72. College Park, MD: University of Maryland Working Papers in Linguistics. \href{http://www.ling.umd.edu/publications/volume15/index.php}{http://www.ling.\linebreak[4]umd.edu/publications/volume15/index.php}.
+  {\footnotesize\bfseries \hfill [Work available online]}
+
+
+\end{list}
+
+%%% END REFERENCES
+
+%%% BEGIN CONTACT INFO
+
+\insertcontact
+
+
+%%% END CONTACT INFO
+
+
+\end{document}  

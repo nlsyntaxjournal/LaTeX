@@ -1,0 +1,119 @@
+%%%PLEASE DO NOT ALTER OR CUSTOMIZE THIS STYLE FILE. THANK YOU.
+
+\NeedsTeXFormat{LaTeX2e}[1996/06/01]
+\ProvidesPackage{syntaxrev-xelatex}[2004/12/21 1.0 CHAEL, modified 2005/01/26 iris mulders, appropriated 2008/9/22 david hill,modified 2008/10/1 david hill, xetexified 2020/1/12 david hill]
+
+%one inch margins
+\RequirePackage[margin=1in]{geometry}
+
+%no vertical justification
+\raggedbottom
+
+%Times font (for both text and math environments)
+%\RequirePackage{times,mathptmx}
+
+
+%double spacing
+\RequirePackage{setspace}
+\doublespacing
+
+% NEW DATA-INPUT COMMANDS
+
+\newcommand{\brieftitle}[1]{\gdef\@brieftitle{#1}}
+\newcommand{\contactinfo}[1]{\gdef\@contactinfo{#1}}
+
+
+% HEADERS AND FOOTERS
+\RequirePackage{fancyhdr}
+\pagestyle{fancy} 
+
+\newcommand{\runninghead}{
+\fancyhead{} % clear all header fields 
+\fancyhead[LE]{\thepage \quad  \textit{\@brieftitle}} 
+%in the pub version, the above "\@brieftitle" is replaced with "\@author" to print authors in left running head
+\fancyhead[RO]{\textit{\@brieftitle} \quad \thepage} 
+\fancyfoot{} % clear all footer fields 
+%\fancyfoot[LE,LO]{\scriptsize \copyright \ 2009 The Author \\ Journal compilation \copyright  \ 2009 Blackwell Publishing Ltd} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0pt} 
+}
+
+\newcommand{\syntaxfirstpage}[1]{%
+
+\fancypagestyle{plain}{%
+\fancyhead{} 	% clear all header fields
+%\fancyhead[L]{#1}
+%first page volume/page header is suppressed in the review format
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+}
+
+\thispagestyle{plain}
+}
+
+
+
+
+% MANUSCRIPT TITLE AND AUTHOR
+
+\renewcommand{\maketitle}{
+\begin{center}
+\vspace*{15pt}
+
+{\Large \@title}
+
+%\textit{\large \@author}
+%in the pub version, the above line, containing author info, is not commented out.
+
+\vspace*{15pt}
+\end{center}
+}
+
+% ACKNOWLEDGMENT
+
+\def\ackfootnote{\xdef\@thefnmark{}\@footnotetext}
+
+
+
+	% SECTION HEADINGS
+
+\renewcommand{\section}{\@startsection{section}{1}{0pt}%
+    {-15pt plus -1ex minus -.2ex}%
+    {1pt plus .2ex}%
+    {\normalfont\bfseries}}
+
+    \let\@@seccntformat\@seccntformat
+    \renewcommand*{\@seccntformat}[1]{%
+      \expandafter\ifx\csname @seccntformat@#1\endcsname\relax
+        \expandafter\@@seccntformat
+      \else
+        \expandafter
+          \csname @seccntformat@#1\expandafter\endcsname
+      \fi
+        {#1}%
+    }
+    
+    \newcommand*{\@seccntformat@section}[1]{%
+  \csname the#1\endcsname.\quad
+}
+
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}%
+    {-15pt plus -1ex minus -.2ex}%
+    {1pt plus .2ex}%
+    {\normalfont\itshape}}
+
+\renewcommand{\subsubsection}[1]
+	{\@startsection{subsubsection}{3}{0pt}%
+    		{-15pt plus -1ex minus -.2ex}%
+    		{1pt plus .2ex}%
+    		{\normalfont}
+		{\itshape #1}}
+
+
+% CONTACT INFO
+\newcommand{\insertcontact}{ }
+% the above command actually inserts contact info in the pub version!
+
+% enables hypertext features of TeX documents (xetexified)
+\RequirePackage[xetex,colorlinks,linkcolor=magenta,citecolor=magenta,filecolor=magenta,urlcolor=magenta]{hyperref}
+%color options are black instead of magenta in the pub format
