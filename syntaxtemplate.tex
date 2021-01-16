@@ -15,21 +15,18 @@
 %\usepackage{syntaxrev-xelatex}  
 
 
-%The pdtex and latex+dvi versions of the style file load Times fonts. If using xelatex, we can recommend the Stix fonts (https://www.stixfonts.org), since they are what is used for our published articles:
+%We can recommend using the Stix fonts (https://www.stixfonts.org), since they include a full range of characters. They are used for our published articles. 
+
+%%The pdtex and latex+dvi versions of the style file load Times fonts. You can override that by loading the stix2 package afterwards:
+%\usepackage{stix2}
+
+%If using xelatex:
 %\usepackage{mathspec}  
 %\setmathfont(Symbols){STIXTwoMath}
 %\setmathfont(Digits,Latin,Greek)[Numbers=OldStyle]{STIXTwoText}
 %\setmathfont[range={"0000-"FFFF}, Numbers=OldStyle]{STIXTwoText}
 %\setmainfont[Mapping=tex-text, Numbers=OldStyle]{STIXTwoText}
 
-%With traditional latex, you can override the style file by loading the stix2 package afterwards:
-%\usepackage{stix2}
-
-% IPA symbols:
-\usepackage{tipa} %http://tug.ctan.org/tex-archive/fonts/tipa/
-
-% linguistic trees: 
-\usepackage{qtree} %http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/
 
 % linguistic examples:
 \usepackage{linguex} %http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/
@@ -38,14 +35,23 @@
 \renewcommand{\firstrefdash}{}
 \renewcommand{\secondrefdash}{}
 
+
+% linguistic trees: 
+\usepackage{qtree} %http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/
+
+
+% IPA symbols:
+\usepackage{tipa} %http://tug.ctan.org/tex-archive/fonts/tipa/
+
+
 % bibliography (commented out here because this template was originally composed in ignorance of BibTeX and has not yet been revised):
 %\usepackage{natbib}
 %\bibliographystyle{syntax-fixed-DH}
-%%Option A: using \citet for textual citations and (...\citet...) for parenthetical ones:
+%%Option A: using \citet for textual citations of sources and (...\citet...) for parenthetical ones:
 %%\bibpunct[:]{}{}{,}{a}{}{,}
    %%or%%
 %%\setcitestyle{open={},close={},aysep={},notesep={:}}
-%%Option B: using \citealt for textual citations and \citep for parenthetical ones:
+%%Option B: using \citealt for textual citations of sources and \citep for parenthetical ones:
 %%\bibpunct[:]{(}{)}{,}{a}{}{,}
    %%or%%
 %%\setcitestyle{round,aysep={},notesep={:}}
@@ -221,42 +227,31 @@ Your use of \texttt{qtree} will depend on various specific factors.  Full docume
 
 
 \section{Citations and References}\label{secbib}
-This third section, on bibliography,  focuses mainly on the relevant aspects of \emph{Syntax} style, as opposed to the mechanics of implementing them in LaTeX. \emph{Syntax} does not prescribe any particular implementation.  You are welcome to use BibTeX or a similar bibliographical program to manage and automate your citations and references within LaTeX, as long as you submit all the files necessary to typeset your document successfully using only a standard TeX distribution, and as long as the end result conforms to the style guidelines given here. But a more ``manual'' approach is also welcome and it simplifies the publishing process. BibTeX is included with most TeX distributions; consult the documentation for more information.
+This third section, on bibliography,  focuses mainly on the relevant aspects of \emph{Syntax} style, as opposed to the mechanics of implementing them in LaTeX. \emph{Syntax} does not prescribe any particular implementation.  We encourage you to use BibTeX (see the commented-out commands in the preamble to this document) or a similar bibliographical program to manage and automate your citations and references within LaTeX, as long as you submit all the files necessary to typeset your document successfully using only a standard TeX distribution, and as long as the end result conforms to the style guidelines given here. 
 
-
-Citations should use the author/date system. Note: \emph{Inoue 1976} is the name of a work, whereas \emph{Inoue (1976)} is the name of a person (followed, parenthetically, by a year in which that person published something). This distinction gives rise to parallel sets of formats:
+Citations should use the author--date system. In \emph{Syntax} style, \emph{Inoue 1976} is the name of a work while \emph{K. Inoue (1976)} is the name of a person followed by a parenthetical citation of one of their works, shortened so as not to redundantly repeat the author's name (\emph{K. Inoue (Inoue 1976)). In other words, the \emph{basic} format is \emph{Inoue 1976}.\footnote{This is Chicago style. The \emph{Chicago manual of style} is the basic style reference of \emph{Syntax} and some other linguistics journals, and its version of author--date style is the historical basis of the common linguistics author--date style, which seems to have first appeared in the 1966 volume of \emph{Language}. Compare APA: the basic citation is \emph{Inoue (1976)} (when such a citation is iteself parenthesized, the parentheses around the year are replaced by commas: \emph{(Inoue, 1976)}), and the corresponding reference-list entry is \emph{Inoue, K. (1976). \ldots} In both APA and Chicago, the citation is an abbreviation of the reference-list entry. Hence the parenthesized year in both places in APA and the bare year in both places in Chicago.} This distinction gives rise to parallel formats:
 
 \ex. Outside of a parenthesis:
-\a. As explained in Inoue 1976, \ldots
-\b. As explained by Inoue (1976), \ldots
+\a. As Inoue 1976 demonstrates \ldots
+\b. As K. Inoue (1976) famously demonstrated \ldots
 
 \ex. In a parenthesis:
-\a. It has long been understood (at least since Inoue 1976) \ldots  {\footnotesize\bfseries \hfill [Preferred]}
-\b. It has long been understood (at least since Inoue's [1976] work) \ldots 
+\a. It has long been understood (at least since Inoue 1976) \ldots  
+\b. It has long been known (since K. Inoue [1976] famously proved it) \ldots 
 
-\ex. Outside of a parenthesis, with a page citation (one page):\footnote{When a colon is used, it is not followed by a space: \emph{1976:27} is one continuous sequence.}
-\a. As explained in Inoue 1976 (p. 27), \ldots
-\b. As explained by Inoue (1976:27), \ldots	 {\footnotesize\bfseries \hfill [Preferred]}
+\ex. With a page citation:\footnote{When a colon is used, it is not followed by a space: \emph{1976:27} is one continuous sequence. For all numerical ranges (both page ranges and other types), you should use an en dash (--) to separate the beginning and end numerals, rather than a hyphen (-). In LaTeX, an en dash is simply two hyphens in sequence. }
+\a. As Inoue 1976:27--30 states \ldots
+\b. As K. Inoue (1976:27--30) famously stated \ldots 	
 
-\ex. Outside of a parenthesis, with a page citation (multiple pages):\footnote{For all numerical ranges (both page ranges and other types), you should use an en dash (--) to separate the beginning and end numerals, rather than a hyphen (-). In LaTeX, an en dash is simply two hyphens in sequence. }
-\a. As explained in Inoue 1976 (pp. 27--30), \ldots
-\b. As explained by Inoue (1976:27--30), \ldots 	 {\footnotesize\bfseries \hfill [Preferred]}
+\ex. With a footnote citation:\footnote{Parts of a work other than pages and footnotes are similarly abbreviated: \emph{chap.} for \emph{chapter}, \emph{sec.} for \emph{section}. Contrast  this with cross-references to your own sections and notes: these are written out in full---for example, \emph{section \ref{secbib}}, \emph{note \ref{noteprime}}.}
+\a. As Inoue 1976:n. 5 mentions \ldots
+\b. As K. Inoue (1976:n. 5) reminds us \ldots	 
 
-\ex. Outside of a parenthesis, with a footnote citation:\footnote{Parts of a work other than pages and footnotes are similarly abbreviated: \emph{chap.} for \emph{chapter}, \emph{sec.} for \emph{section}. Contrast  this with cross-references to your own sections and notes: these are written out in full---for example, \emph{section \ref{secbib}}, \emph{note \ref{noteprime}}.}
-\a. As explained in Inoue 1976 (n. 5), \ldots
-\b. As explained by Inoue (1976:n. 5), \ldots	 {\footnotesize\bfseries \hfill [Preferred]}
+Most citations of sources should use ``work talk'' rather than ``person talk''; that is, they should use the (a) format. However, for sustained discussion of a single source, it is repetitious to keep giving the bulky author--date citation and preferable to switch to the more flexible ``person talk'': \emph{In accord with \emph{Inoue 1976}, I analyze X as \ldots Specifically, I adopt \emph{Inoue's} assumption (p. 273) that \ldots However, I do not adopt \emph{his} further assumption (p. 275) that \ldots} 
 
-\ex. In a parenthesis, with a page citation:
-\a. It has long been understood (at least since Inoue 1976:27) \ldots  {\footnotesize\bfseries \hfill [Preferred]}
-\b. It has long been understood (at least since Inoue's [1976:27] work) \ldots 
+Note that works are singular, sole authors are singular, and joint authors are plural.
 
-\ex. In a parenthesis, with a footnote citation:
-\a. It has long been understood (at least since Inoue 1976:n. 5) \ldots {\footnotesize\bfseries \hfill [Preferred]}
-\b. It has long been understood (at least since Inoue's [1976:n. 5] work) \ldots   
-
-Inside parentheses, it is generally preferred to cite the work rather than the author, while outside parentheses, when a page or note number is being cited, author citations are preferable.
-
-The references list is the final, unnumbered section of the document. Please refer to the sample list below for how to format different types of references. Unlike this list, your list should be in alphabetical order by author's surname (and should, of course, omit the boldfaced labels at the end of each sample reference). Initial lowercase words in a surname (such as \emph{den} in \emph{den Dikken}) should be treated as invisible for alphabetization purposes.
+The references list is the final, unnumbered section of the document. Please refer to the sample list below for how to format different types of references. Unlike this list, your list should be in alphabetical order by author's surname. 
 
 All works listed in the references section should be cited at least once in the text, and all works cited should be listed in the references. Please double-check. 
 
