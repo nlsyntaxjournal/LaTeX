@@ -30,8 +30,6 @@
 
 % linguistic examples:
 \usepackage{linguex} %http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/
-
-% suppresses the dash in references to subexamples (linguex.sty)
 \renewcommand{\firstrefdash}{}
 \renewcommand{\secondrefdash}{}
 
@@ -44,17 +42,19 @@
 \usepackage{tipa} %http://tug.ctan.org/tex-archive/fonts/tipa/
 
 
-% bibliography (commented out here because this template was originally composed in ignorance of BibTeX and has not yet been revised):
-%\usepackage{natbib}
-%\bibliographystyle{syntax-fixed-DH}
-%%Option A: using \citet for textual citations of sources and (...\citet...) for parenthetical ones:
-%%\bibpunct[:]{}{}{,}{a}{}{,}
-   %%or%%
-%%\setcitestyle{open={},close={},aysep={},notesep={:}}
-%%Option B: using \citealt for textual citations of sources and \citep for parenthetical ones:
-%%\bibpunct[:]{(}{)}{,}{a}{}{,}
-   %%or%%
-%%\setcitestyle{round,aysep={},notesep={:}}
+% bibliography:
+\usepackage{natbib}
+\bibliographystyle{syntax-fixed-DH}
+
+%%%Option A: using \citet for textual citations of sources and (...\citet...) for parenthetical ones:
+%%%\bibpunct[:]{}{}{,}{a}{}{,}
+   %%%or%%%
+%%%\setcitestyle{open={},close={},aysep={},notesep={:}}
+
+%%%Option B: using \citealt for textual citations of sources and \citep for parenthetical ones:
+%%%\bibpunct[:]{(}{)}{,}{a}{}{,}
+   %%%or%%%
+%%%\setcitestyle{round,aysep={},notesep={:}}
 
 
 \begin{document}
@@ -227,7 +227,7 @@ Your use of \texttt{qtree} will depend on various specific factors.  Full docume
 
 
 \section{Citations and References}\label{secbib}
-This third section, on bibliography,  focuses mainly on the relevant aspects of \emph{Syntax} style, as opposed to the mechanics of implementing them in LaTeX. \emph{Syntax} does not prescribe any particular implementation.  We encourage you to use BibTeX (see the commented-out commands in the preamble to this document) or a similar bibliographical program to manage and automate your citations and references, as long as you submit all the files necessary to typeset your document successfully using only a standard TeX distribution and as long as the end result conforms to the style guidelines given here. 
+This third section, on bibliography,  focuses mainly on the relevant aspects of \emph{Syntax} style, as opposed to the mechanics of implementing them in LaTeX. \emph{Syntax} does not prescribe any particular implementation.  We encourage you to use BibTeX (see the commands provided in the preamble to this document and the accompanying .bst file) or a similar bibliographical program to manage and automate your citations and references, as long as you submit all the files necessary to typeset your document successfully using only a standard TeX distribution and as long as the end result conforms to the style guidelines given here. 
 
 Citations should use the author--date system. In \emph{Syntax} style, \emph{Inoue 1976} is the name of a work while \emph{K. Inoue (1976)} is the name of a person followed by a parenthetical citation of one of their works, shortened so as not to repeat their name (\emph{K. Inoue (Inoue 1976)). In other words, the \emph{basic} format is \emph{Inoue 1976}.\footnote{This is ``Chicago'' format. The \emph{Chicago manual of style} is the basic style reference of \emph{Syntax} and some other linguistics journals, and its version of author--date style is the historical basis of the common linguistics author--date style, which seems to have first appeared in the 1966 volume of \emph{Language}. Compare APA: the basic citation format is \emph{Inoue (1976)} (when such a citation is iteself parenthesized, the parentheses around the year are replaced by commas: \emph{(Inoue, 1976)}), and the corresponding reference-list entry is \emph{Inoue, K. (1976). \ldots} In both APA and Chicago, the citation is an abbreviation of the reference-list entry. Hence the parenthesized year in both places in APA and the bare year in both places in Chicago.} This distinction gives rise to parallel formats:
 
