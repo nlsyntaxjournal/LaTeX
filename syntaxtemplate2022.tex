@@ -1,53 +1,60 @@
-%%% TO TURN THIS DOCUMENT INTO A MANUSCRIPT, START BY SAVING IT WITH A NEW NAME; THEN FOLLOW THE INSTRUCTIONS GIVEN THROUGHOUT, IN THE COMMENTS THAT BEGIN WITH "%%%" AND ARE IN ALL CAPS. Other comments are merely informative. 
-
-%%% You may notice that some of the information you enter in this document is suppressed in the output (e.g., author names and contact information). This is because the output is customized for use in the review process, not publication. Please enter the information anyway. This source file will not be forwarded to reviewers.
-
 \documentclass[letterpaper,12pt, twoside]{article}
 %%% IF YOU NEED TO PRINT ON A4 PAPER INSTEAD OF 8.5 X 11 INCH PAPER, REPLACE THE OPTION "letterpaper" WITH "a4paper."
+
+%%% YOU NEED THE FILE "syntax2022.sty" IN ORDER TO TYPESET THIS DOCUMENT IN LATEX.
+\usepackage{syntax2022}  
+%%% PLEASE DO NOT ALTER OR CUSTOMIZE THE STYLE FILE. INSTEAD, MAKE ADDITIONS (IF NEEDED) TO THE "OPTIONAL" BLOCK BELOW. 
+
+%Fine-tune hyperref depending on what compiler you're using:
+\hypersetup{pdftex}
+%\hypersetup{dvips}
+%\hypersetup{xetex}
 
 %Margin width -- if you switch the font from Times to Stix below, also switch to narrower margins here:
 \usepackage[margin=1.12in]{geometry}
 %\usepackage[margin=0.98in]{geometry}
 
 
-\usepackage{syntax2022}  
-%%% YOU NEED THE FILE "syntax2022.sty" (or one of the alternate versions) IN ORDER TO TYPESET THIS DOCUMENT IN LATEX.
-%%% PLEASE DO NOT ALTER OR CUSTOMIZE THIS STYLE FILE -- USE IT AS IS. 
 
-%%To load one of the alternate versions of the style file (if your document involves pstricks/directly embedded postscript, or if you want to use xetex):
-%\usepackage{syntax2022-dvips}  
-%\usepackage{syntax2022-xelatex}  
+%%%%BEGIN BLOCK OF STRICTLY OPTIONAL, THOUGH MOSTLY HIGHLY RECOMMENDED, ADDITIONS%%%%
 
 
-%The pdtex and latex+dvi versions of the style file load Times fonts. If using xelatex, we can recommend the Stix fonts (https://www.stixfonts.org), since they are what is used for our published articles:
+%Fonts:
+
+%The style file loads Times fonts. If you need IPA symbols, load this as well:
+%\usepackage{tipa} 
+
+%We actually recommend using Stix instead of Times, though, since that is the font used for our published articles; choose one of the following two options, depending on your choice of compiler.
+
+%For pdftex and tex+dvi:
+\usepackage{stix2}
+
+%For XeLaTeX (you will need to download the fonts from http://stixfonts.org):
 %\usepackage{mathspec}  
 %\setmathfont(Symbols){STIXTwoMath}
 %\setmathfont(Digits,Latin,Greek)[Numbers=OldStyle]{STIXTwoText}
 %\setmathfont[range={"0000-"FFFF}, Numbers=OldStyle]{STIXTwoText}
 %\setmainfont[Mapping=tex-text, Numbers=OldStyle]{STIXTwoText}
 
-%With traditional latex, you can override the style file by loading the stix2 package afterwards:
-%\usepackage{stix2}
+%%Please, let us know if you experience any problems using syntax2022.sty with XeLaTeX (specifically due to the fonts it loads).
 
 
-% IPA symbols:
-\usepackage{tipa} %http://tug.ctan.org/tex-archive/fonts/tipa/
-
-% linguistic trees: 
+% Linguistic trees: 
 \usepackage{qtree} %http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/
 
-% numbered display items (examples, paradigms, structures, principles, etc.):
+
+% Numbered display items (examples, paradigms, structures, principles, etc.):
 \usepackage{linguex} %http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/
 \renewcommand{\firstrefdash}{}
 \renewcommand{\secondrefdash}{}
 \renewcommand{\SubSubExLBr}{}
 \renewcommand{\SubSubExRBr}{.}
 
-% the array package is useful for adding right-aligned labels to numbered display items:
+% The Array package is useful for adding right-aligned labels to numbered display items:
 \usepackage{array}
 
 
-% bibliography:
+% For bibliography management, we support Natbib:
 \usepackage{natbib}
 \bibliographystyle{syntax2022}
 
@@ -64,50 +71,69 @@
 %%%\setcitestyle{round,aysep={},notesep={:~}}
 
 
+%%%%END BLOCK OF OPTIONAL ADDITIONS%%%%
+
+
 
 \begin{document}
 
-%%% ARTICLE TYPE (change to "Remark" if appropriate)
-\noindent Regular article
+
+
+%%%%BEGIN DATA-ENTRY BLOCK FOR \MAKETITLE%%%%
+
+
+%%% ENTER ARTICLE TYPE (change to "Regular article" to "Remark" if appropriate)
+\articletype{Regular article}
 
 %%% ENTER TITLE
 \title{This is a \emph{Syntax} article's title: Convention calls for the subtitle to be capitalized}
 
+%%% ENTER AUTHOR INFORMATION
 
-%%% ENTER AUTHORS AND AFFILIATIONS; LEAVE BLANK OR COMMENTED OUT FOR REVIEW PURPOSES
+%%%UNTIL FINAL ACCEPTANCE, use the following option and comment out the single-affiliation and multiple-affiliation options.
 
-%For a single affiliation (regardless of how many authors)
-%\author{FirstName LastName \\ Affiliation }
+%\author{[Identifying information redacted for review purposes]}
 
-%For multiple affiliations (regardless of how many authors)
+%%%AFTER FINAL ACCEPTANCE:
+
+%For a single affiliation (regardless of how many authors), use the following option instead of the "multiple affiliations" option (activated for this document).
+
+%\author{Firstname Lastname \\ Affiliation}
+
+%For multiple affiliations (regardless of how many authors):
+
 \author[1]{Firstname Lastname}
 \author[2]{Firstname Lastname}
-\author[1]{Firstname Lastname}
+\author[1, 2]{Firstname Lastname}
 \affil[1]{University of One Place}
 \affil[2]{University of Another Place}
 
 
-
+%%%%END DATA-ENTRY BLOCK FOR \MAKETITLE%%%%
 
 
 \maketitle
-\runninghead
 
 
-%%% ENTER CORRESPONDENCE ADDRESS HERE; LEAVE BLANK OR COMMENTED OUT FOR REVIEW PURPOSES
+%%% UNTIL FINAL ACCEPTANCE, comment out or delete the "Correspondence" section.
 \section*{Correspondence}
 \begin{flushleft}
-Corrfirstname Corrlastname \\ Department \\ Institution \\ Address \\ Country \\  who@where.wh
+Firstname Lastname \\ Department \\ Institution \\ Address \\ Country \\  who@where.wh
 \end{flushleft}
 
 
+
 \section*{Abstract}
-This document is currently undergoing massive revision! The other elements of the bundle, including the preamble and basic structure of the present document, are mostly complete, but the discursive text here is still in transition. Okay, our abstracts are 200 words or less and contain no source citations documenting the statements they contain. This bundle of LaTeX resources is meant to be used to produce manuscripts for submission to the journal \emph{Syntax}. Besides already having the right high-level formatting to facilitate publication of your manuscript after acceptance, the present document also provides guidelines for formatting the text you input according to \emph{Syntax} style and according to the special capabilities of LaTeX (and the limitations of those capabilities). 
+[Our abstracts are 200 words or less and contain no source citations documenting the statements they make.] This ``template'' document is part of a bundle of LaTeX resources meant to be used to produce manuscripts for submission to the journal \emph{Syntax}. Besides already having the right high-level formatting to facilitate publication of your manuscript after acceptance, the present document also serves as documentation for the bundle as a whole, providing guidelines for formatting the text you input according to \emph{Syntax} style and according to the special capabilities of LaTeX (and the limitations of those capabilities). 
 
 \section*{Keywords}
 syntax, LaTeX
 
-%%% BEGIN BODY
+%%% The following command generates a table of contents. This TOC is potentially helpful to reviewers and editors who are working with the PDF of your manuscript. It will not be typeset as part of the actual text of the article. Note that unnumbered sections (\section*) are omitted from the TOC by default, but they can be included with a bit of extra code. See the data-availability statement, for example.
+\tableofcontents
+
+
+%%%%BEGIN BODY OF PAPER%%%%
 \section{Introduction: using the \emph{Syntax} template package}
 The purpose of this template is to output a text that will serve for review purposes and as input for non-TeX typesetting (our publisher works with an XML conversion of the TeX output). Therefore, not many special design elements are needed. Just use unnumbered sections (\verb|\section*|) for the correspondence address, abstract, and keywords. Then use numbered sections  (\verb|\section|) for the body of the paper, and use unnumbered sections again for the data-availability statement, acknowledgments, references, appendices, and dual supporting-information sections.
 
@@ -117,15 +143,17 @@ In the preamble:
 
 \begin{itemize}
 \item \verb|\documentclass[letterpaper,12pt, twoside]{article}|
-\item \verb|\usepackage{syntax2022}| or
-\\ \noindent \verb|\usepackage{syntax2022-dvips}| or 
-\\ \noindent \verb|\usepackage{syntax2022-xelatex}|
+\item \verb|\usepackage{syntax2022}| %or
+%\\ \noindent \verb|\usepackage{syntax2022-dvips}| or 
+%\\ \noindent \verb|\usepackage{syntax2022-xelatex}|
 \end{itemize}
 
 And immediately after \verb|\begin{document}|:
 
 \begin{itemize}
+\item\verb|\articletype{}|
 \item\verb|\title{}|
+\item\verb|\author{}|
 \item\verb|\maketitle|
 \end{itemize}
 
@@ -137,12 +165,12 @@ This document is not meant to replace the full \href{https://docs.google.com/doc
 
 
 \section{References and citations}\label{secbib}
-We do not prescribe a specific reference-management solution, but we do provide direct support for the most popular one: BibTeX, specifically using the author--date capabilities of the natbib package. See the end of this section for a word about BibLaTeX.
+We do not prescribe a specific reference-management solution, but we do provide direct support for the most popular one: BibTeX, specifically using the author--date capabilities of the Natbib package. See the end of this section for a word about BibLaTeX.
 
 If you are using BibTeX or BibLaTeX to manage the references of your paper, great. The main thing we will need from you for publication purposes is your .bib file. You can apply our specific implementation, as explained here, or we will do so. 
 
 \emph{Syntax}'s LaTeX support package includes a sample bibliographical database, syntaxbib2022.bib, and our bibliography style, syntax2022.bst. The .bib file has the standard structure, but it also uses some of the custom fields that the .bst file supports (which are \verb|titletrans| and a set of fields to handle multivolume works: \verb|mvtitle|, \verb|mveditor|, \verb|mvnumber|, \verb|mvedition|, \verb|mvseries|, \verb|mvseriesnum|; these elements of our implementation are still partly in development).
-The .bst file implements, in BibTeX, the \emph{Syntax} variant of the common linguistics style; it requires the natbib package. 
+The .bst file implements, in BibTeX, the \emph{Syntax} variant of the common linguistics style; it requires the Natbib package. 
 
 In the position in the text where the reference list goes (below the acknowledgments), use the \verb|\bibliography| command with the name of your .bib file:
 
@@ -157,40 +185,39 @@ Add the following commands to the preamble of your .tex file.
 \item  \verb|\bibliographystyle{syntax2022}|
 \end{itemize}
 
-We also need to set the citation style. Given the logic of natbib, there are two options for achieving \emph{Syntax} style, option A and option B.  If you have used the\verb|\citep| command for parenthetical citations in your text---citations like \citep{journalarticle,book,bookchapter,thesis,unpublished}---you will want to use option B. Otherwise, option A is best.
+We also need to set the citation style. Given the logic of Natbib, there are two options for achieving \emph{Syntax} style, option A and option B.  If you have used the\verb|\citep| command for parenthetical citations in your text---citations like \citep{journalarticle,book,bookchapter,thesis,unpublished}---you will want to use option B. Otherwise, option A is best.
 
-Option A: using \verb|\citet| for ``textual'' citations of sources---rendering \citealt{journalarticle,book,bookchapter,thesis,unpublished}---and \verb|(\citet)| for ``parenthetical'' ones:
+Option A: using \verb|\citet| for all citations of sources---rendering \citealt{journalarticle,book,bookchapter,thesis,unpublished}---and adding parentheses manually, \verb|( . . . \citet . . . )|, as needed:
 
 \begin{itemize}
 \item \verb|\bibpunct[:~]{}{}{,}{a}{}{,}| or\\ \verb|\setcitestyle{open={},close={},aysep={},notesep={:~}}|
 \end{itemize}
 
-Option B: using  \texttt{$\backslash$citealt} for ``textual'' citations of sources and \verb|\citep| for ``parenthetical'' ones:
+Option B: using  \texttt{$\backslash$citealt} for ``textual'' citations of sources and \verb|\citep| for parenthetical ones:
 
 \begin{itemize}
 \item \verb|\bibpunct[:~]{(}{)}{,}{a}{}{,}| or\\ \verb|\setcitestyle{round,aysep={},notesep={:~}}|
 \end{itemize}
 
-natbib's approach to the author--date system imports an APA-like assumption that every citation involves parentheses one way or another: either around the whole citation (\verb|\citep|) or around all but the author's name (\verb|\citet|). As explained in the \href{https://docs.google.com/document/d/1T0zHwq2b53VnqF18c8PKd-W_FWKqhKF0gkbBndoxj28/edit?usp=sharing}{\emph{Syntax} submission instructions}, however, the basic format for citations (not just in \emph{Syntax} but also in other standard variants of linguistic style, such as \emph{Language}'s and \emph{Linguistic Inquiry}'s), as in \emph{see \citealt{journalarticle}}, 
-is simply \emph{\citealt{journalarticle}}, with no parentheses. So, under option A, we specify null parentheses, so that \verb|\citet| renders the correct output. The drawback of this solution is that it renders \verb|\citep| unusable (its output is identical to that of \verb|\citet|); just insert parentheses wherever they are actually needed. The alternative, used in this document, is option B: use \verb|\citealt| (the parenthesisless alternative to the basic \verb|\citet|) to achieve the parenthesisless look and leave everything else alone.
+Natbib's approach to the author--date system imports an APA-like assumption that every citation involves parentheses one way or another: either around the whole citation (\verb|\citep|) or around all but the author's name (\verb|\citet|). As explained in the \href{https://docs.google.com/document/d/1T0zHwq2b53VnqF18c8PKd-W_FWKqhKF0gkbBndoxj28/edit?usp=sharing}{\emph{Syntax} submission instructions}, however, the basic format for citations (not just in \emph{Syntax} but also in other standard variants of linguistic style, such as \emph{Language}'s and \emph{Linguistic Inquiry}'s) is simply \emph{\citealt{journalarticle}}, with no parentheses, as in \emph{See \citealt{journalarticle}}. So, under option A, we specify null parentheses, so that \verb|See \citet| renders the correct output. The drawback of this solution is that it renders \verb|\citep| unusable (its output is identical to that of \verb|\citet|); just insert parentheses wherever they are actually needed. The alternative, used in this document, is option B: use \verb|\citealt| (the parenthesisless alternative to the basic \verb|\citet|) to achieve the parenthesisless look and leave everything else alone.
 
-As for BibLaTeX, we do not currently provide a BibLaTeX implementation: you may wish to use \href{https://ctan.org/pkg/biblatex-unified}{biblatex-unified}, which achieves very similar output. If possible, though, please use  natbib citation commands in your .tex file (\verb|\usepackage[natbib=true]{biblatex}|), because we will have to convert to BibTeX during copyediting. The main reason we do not support BibLaTeX more fully is that our production process involves generating the final bibitems and embedding them statically in the .tex file; BibLaTeX does not generate such bibitems. Also, developing BibLaTeX competence is nontrivial, while BibTeX appears to be adequate for most purposes and still the choice of most authors.
+As for BibLaTeX, we do not currently provide a BibLaTeX implementation: you may wish to use \href{https://ctan.org/pkg/biblatex-unified}{Biblatex-unified}, which achieves very similar output. If possible, though, please use  Natbib citation commands in your .tex file (\verb|\usepackage[natbib=true]{biblatex}|), because we will have to convert to BibTeX during copyediting. The main reason we do not support BibLaTeX more fully is that our production process involves generating the final bibitems and embedding them statically in the .tex file; BibLaTeX does not generate such bibitems. Also, developing BibLaTeX competence is nontrivial, while BibTeX appears to be adequate for most purposes and still the choice of most authors.
 
 
 
 \section{Numbered display items, such as examples and structures}\label{secexs}
-This section\footnote{This is the first regular numbered footnote, immediately following the acknowledgment. It is generally best if each section heading is followed by some text, rather than being followed immediately by a (lower-level) section heading. \label{padding}}   gives some sample numbered items using the \emph{Syntax}-recommended package {linguex}. 
+This section\footnote{This is the first regular numbered footnote, immediately following the acknowledgment. It is generally best if each section heading is followed by some text, rather than being followed immediately by a (lower-level) section heading. \label{padding}}   gives some sample numbered items using the \emph{Syntax}-recommended package {Linguex}. 
 
-This section constitutes an incomplete and \emph{Syntax}-centric introduction to {linguex}. For a fuller introduction, please consult the {linguex} documentation, available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/}{http://tug.ctan.org/\linebreak[1]tex-archive/macros/latex/contrib/linguex/}}.
+This section constitutes an incomplete and \emph{Syntax}-centric introduction to {Linguex}. For a fuller introduction, please consult the {Linguex} documentation, available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/}}.
 
 Section \ref{secbasics} provides basic examples; section \ref{secjbg} explains how to add grammaticality judgments, brackets, and glosses; and section \ref{seccross} contains some notes on cross-referencing your own examples.
 
 \subsection{The basics}\label{secbasics}
-The basic {linguex} macro is \texttt{$\backslash$ex.}, which generates an autonumber for the example and indents the following text. Here is a simple example.
+The basic {Linguex} macro is \texttt{$\backslash$ex.}, which generates an autonumber for the example and indents the following text. Here is a simple example.
 
 \ex. Frivolous nonexistent pillows argue kindly.
 
-Note an important subtlety: the text you are now reading is a continuation of the paragraph that began before the example. It is not indented. In the LaTeX source file, this paragraph continuation is separated from the example by a single blank line---the minimum that {linguex} requires in order to detect the end of the example environment. 
+Note an important subtlety: the text you are now reading is a continuation of the paragraph that began before the example. It is not indented. In the LaTeX source file, this paragraph continuation is separated from the example by a single blank line---the minimum that {Linguex} requires in order to detect the end of the example environment. 
 
 Now here is an example containing subexamples, followed by a new paragraph.
 
@@ -199,7 +226,7 @@ Now here is an example containing subexamples, followed by a new paragraph.
 \b. Colorless green ideas sleep furiously.
 
 
-This is a new paragraph, as indicated by the fact that it is indented. The way to obtain this indent when you are using {linguex} is to put \emph{two} or more blank lines after the example.\footnote{A consequence of the way {linguex} interprets blank lines: no blank lines are permitted within a single numbered example, not even between subexamples.} 
+This is a new paragraph, as indicated by the fact that it is indented. The way to obtain this indent when you are using {Linguex} is to put \emph{two} or more blank lines after the example.\footnote{A consequence of the way {Linguex} interprets blank lines: no blank lines are permitted within a single numbered example, not even between subexamples.} 
 
 We can add source citations for items and subitems:
 
@@ -241,31 +268,31 @@ And here is an example where some of the brackets are not labeled. It is best no
 \ex. \I[NP Colorless green ideas] [sleep furiously]. 
 
 
-Using{linguex} also makes it easy to do glossed examples. All you have to do is call the appropriate macro (\texttt{$\backslash$exg.}) and give it three lines of text: the example itself, a string of glosses, and a translation. Vertical alignment between the first two lines is done automatically. 
+Using {Linguex} also makes it easy to do glossed examples. All you have to do is call the appropriate macro (\texttt{$\backslash$exg.}) and give it three lines of text: the example itself, a string of glosses, and a translation. Vertical alignment between the first two lines is done automatically. 
 
 
-\exg. Widz\c{e}  szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}. \\ 
+\exg. Widz\k{e}  sze\'sciu {mi\l ych} {ch\l opc\'ow}. \\ 
 see.\textsc{1sg} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\ 
  `I see six nice boys.'
 
-Just make sure that the first two lines contain the same number of elements, separated by spaces, and {linguex} will do the rest. 
+Just make sure that the first two lines contain the same number of elements, separated by spaces, and {Linguex} will do the rest. 
 
 More precisely, the second line must consist of glosses for each and every element in the first line, in order. This rule continues to apply even when the first line contains elements that do not need glosses, such as brackets:
 
-\exig. Widz\c{e}  [DP szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}]. \\ 
+\exig. Widz\k{e}  [DP sze\'sciu {mi\l ych} {ch\l opc\'ow}]. \\ 
 see.\textsc{1sg} {} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\ 
  `I see six nice boys.' 
 
 The labeled left bracket here counts as an additional element in the first line, because it is separated from the adjacent words by spaces. If you compare the source code here with the previous example, you'll see that we've added a blank group (\verb|{}|) to the second line, in order to give the new left bracket something to align with (namely, nothing). This is a trick. If we don't add this blank group, we get something very unfortunate:
 
-\exig. Widz\c{e}  [DP szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}]. \\ 
+\exig. Widz\k{e}  [DP sze\'sciu {mi\l ych} {ch\l opc\'ow}]. \\ 
 see.\textsc{1sg} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\
  `I see six nice boys.' 
 
 Unlabeled brackets, however, are not separated from the following word by a space and therefore  do not constitute a separate element for alignment purposes. The way to get the following word's gloss  properly aligned with it is to insert a phantom bracket, \verb|\phantom{[}|, rather than a blank group:
 
 \exg. 
-Widz\c{e}  [szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}]. \\ 
+Widz\k{e}  [sze\'sciu {mi\l ych} {ch\l opc\'ow}]. \\ 
 see.\textsc{1sg} \phantom{[}six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\ 
  `I see six nice boys.' 
 
@@ -284,9 +311,17 @@ John	\textsc{neg} seem {} \textsc{inf} be \textsc{refl} \\
 %`He loves the big teddy bear.'\label{teddy}
 
 
-\subsection{Headings, labels}
+\subsection{Headings and labels}
 
-Numbered items and subitems can be given headings:
+Numbered items and subitems can be given headings, which in \emph{Syntax} style are plain, with no added textual styling such as italics or boldface:\footnote{Instead of italics or boldface to set off the heading as a heading, we use a reduced text width (70\%). Normally, a heading is already much shorter than the full available text width, but in the case of a long heading, we can use the minipage environment to specify the narrower width:
+
+\ex.  
+\begin{minipage}[t]{0.7\textwidth}
+\raggedright A famous sentence that once, famously,  inspired a certain amount of cultural engagement \\\
+\end{minipage}\\
+Colorless green ideas sleep furiously. 
+
+}
 
 \ex.  A famous sentence\\
 Colorless green ideas sleep furiously. 
@@ -298,17 +333,22 @@ Colorless green ideas sleep furiously.
 \ex. 
 \a. The trivial variant\\Frivolous nonexistent pillows argue kindly.
 \b. The famous original\\Colorless green ideas sleep furiously.
+ 
+ 
 
 
 
-For glossed examples, there is a bit of a problem, since  \verb|\exg.|, for example, automatically interprets the first line as the sentence to be glossed and the second line as its glosses. A solution, though it's not trouble free, is to use the \verb|g|-less macro and start the glossing environment after the heading using  \verb|\gll|: 
+For glossed examples, there is a bit of a problem, since  \verb|\exg.|, for example, automatically interprets the first line as the sentence to be glossed and the second line as its glosses. A solution, though it's not trouble free, is to use the \verb|g|-less macro and start the glossing environment after the heading, using  \verb|\gll|: 
+
 
 \ex. An example involving numerals
-\gll Widz\c{e}  szes\'ciu {mi\textltilde ych} {ch\textltilde opc\'ow}. \\ 
+\gll Widz\k{e}  sze\'sciu {mi\l ych} {ch\l opc\'ow}. \\ 
 see.\textsc{1sg} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\
  \glt `I see six nice boys.'
 
-(Other packages, such as gb4e, handle this case better.) This is a good moment to recall that, though we are using LaTeX, we only using it to generate a text that will serve as input to our publisher's non-LaTeX typesetting process. The above, though ugly, is adequate for that purpose.
+(Other packages, such as Gb4e, handle this case better.) 
+
+This is a good moment to recall that, though we are using LaTeX, we only using it to generate a text that will serve as input to our publisher's non-LaTeX typesetting process. The above, though ugly, is adequate for that purpose.
 
 A device that can be used sparingly (see the \href{https://docs.google.com/document/d/1T0zHwq2b53VnqF18c8PKd-W_FWKqhKF0gkbBndoxj28/edit?usp=sharing}{\emph{Syntax} submission instructions}) is a short right-aligned label on the first line of the example it labels. Typically this is the name of the language from which the example comes. If the example is brief enough to fit on one line (60 characters or less including spaces), then \verb|\hfill| is sufficient to insert the label:
 
@@ -320,7 +360,7 @@ However, with longer examples, \verb|\hfill| either does not work at all (e.g., 
 \raggedright
 \bigskip
 \begin{tabular}{@{}p{4in}@{}p{0.25in}@{}>{\raggedleft\arraybackslash}p{2in}@{}}
-\vspace{-34pt}
+\vspace{-17pt}   %With double spacing: \vspace{-34pt}
 \exg. *An ftasume ar$\gamma$a \textit{pro} $\theta$a tromaksi tin Maria.\\
 if arrive.1\textsc{pl} late {}  \textsc{fut} scare the Mary\\
 Intended: `If we arrive late, it will scare Mary.'  
@@ -338,11 +378,12 @@ Greek
 \noindent This way, the label has white space below it. With \verb|\hfill|, subsequent lines can bleed into the space below the label, causing it to not stand out clearly. 
 
 
-\subsection{Cross-referencing examples in the text}\label{seccross}
+\subsection{Cross-referencing numbered items in the text}\label{seccross}
+%Include link to section of submission instructions that talks about when it does and doesn't make sense to refer to a numbered item by number (as opposed to saying "the following" or using a colon).
 
-The code \texttt{$\backslash$ref\{NAME\}} produces a (parenthesized) copy of the number of the item that contains the corresponding code \texttt{$\backslash$label\{NAME\}}. It is a good idea to pick short, descriptive label names and to put \texttt{$\backslash$label\{NAME\}} at the \emph{end} of the item whenever possible. In addition, {linguex} provides the contextually defined macros \texttt{$\backslash$Next}, \texttt{$\backslash$NNext}, \texttt{$\backslash$Last}, and \texttt{$\backslash$LLast}, which allow you to add cross-references in the vicinity of an example without going to the trouble of making a label for it. 
+The code \texttt{$\backslash$ref\{NAME\}} produces a (parenthesized) copy of the number of the item that contains the corresponding code \texttt{$\backslash$label\{NAME\}}. It is a good idea to pick short, descriptive label names and to put \texttt{$\backslash$label\{NAME\}} at the \emph{end} of the item whenever possible. In addition, {Linguex} provides the contextually defined macros \texttt{$\backslash$Next}, \texttt{$\backslash$NNext}, \texttt{$\backslash$Last}, and \texttt{$\backslash$LLast}, which allow you to add cross-references in the vicinity of an example without going to the trouble of making a label for it. 
 
-The {linguex} system enables cross-references of the form \emph{(1), (1a), (1)--(2)}  using the regular \texttt{$\backslash$ref{}} command. Things like \emph{(1a,~b)} or \emph{(1b--d)}  (which are the \emph{Syntax} way of citing multiple subitems) are also possible, but only for adjacent numbered items, using  \texttt{$\backslash$Next}, \texttt{$\backslash$NNext}, \texttt{$\backslash$Last}, and \texttt{$\backslash$LLast}. For example, \Last is the last numbered item at the moment, and you can use \texttt{$\backslash$Last[b--d]} to achieve \emph{\Last[b--d]}. (Never mind that those are nonexistent subitems.) To cite multiple subitems of a nonadjacent item, enter the cross-reference manually, as static text.
+The {Linguex} system enables cross-references of the form \emph{(1), (1a), (1)--(2)}  using the regular \texttt{$\backslash$ref{}} command. Things like \emph{(1a,~b)} and \emph{(1b--d)}  (which are the \emph{Syntax} way of citing multiple subitems) are also possible, but only ``locally,'' for adjacent numbered items, using  \texttt{$\backslash$Next}, \texttt{$\backslash$NNext}, \texttt{$\backslash$Last}, and \texttt{$\backslash$LLast}. For example, at the moment, \Last is the last numbered item; you can use \texttt{$\backslash$Last[b--d]} to get \emph{\Last[b--d]}. (Never mind that those are nonexistent subitems.) To cite multiple subitems of a more distant item, enter the cross-reference manually, as static text.
 
 
 
@@ -353,41 +394,50 @@ The {linguex} system enables cross-references of the form \emph{(1), (1a), (1)--
 \section{Linguistic trees}\label{sectrees}
 This section is very incomplete at present.
 
-The package {qtree}, preloaded in this template along with {linguex}, generates publication-quality trees from text input. The basic macro is \texttt{$\backslash$Tree}. Here is an example:\footnote{Both in trees and elsewhere, please notate bar levels using the mathematical prime symbol ($^\prime$), rather than the apostrophe (').\label{noteprime}}
+The package {Qtree}, preloaded in this template along with {Linguex}, generates publication-quality trees from text input. The basic macro is \texttt{$\backslash$Tree}. Here is an example:\footnote{Both in trees and elsewhere, please notate bar levels using the mathematical prime symbol ($^\prime$), rather than the apostrophe (').\label{noteprime}}
 
 \ex.\Tree [.TP Spec [.T$^\prime$ {T} [.vP Subj [.v$^\prime$ v [.VP V Obj ] ] ] ] ]
 
-Trees should, as here, be embedded in a {linguex} example.  
+Trees should, as here, be embedded in a {Linguex} example.  
 
-Your use of {qtree} will depend on various specific factors.  Full documentation for  {qtree} is available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}}.
-
-
+Your use of {Qtree} will depend on various specific factors.  Full documentation for  {Qtree} is available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}}.
 
 
 
-%%%END BODY
+%%%%END BODY OF PAPER%%%%
 
 
+%%%%BEGIN "BACKMATTER"%%%%
 
 
 
 \section*{Data-availability statement}
-Your statement may be some combination of the following sample language or it may be something else entirely. All original data discussed in this article are given explicitly. The original data discussed in this article are available from the corresponding author upon reasonable request. All data discussed in this article have been previously reported in the literature cited.
+\label{sec:datastatement}
+\addcontentsline{toc}{section}{\nameref{sec:datastatement}}
+[Your statement may be some combination of the following sample language, the sample language found \href{https://authorservices.wiley.com/author-resources/Journal-Authors/open-access/data-sharing-citation/data-sharing-policy.html}{on Wiley's website}, and language of your own.] All original data discussed in this article are given explicitly. The original data discussed in this article are available from the corresponding author upon reasonable request. All data discussed in this article have been previously reported in the literature cited.
 
 
-%%%ENTER ACKNOWLEDGMENTS: FOR REVIEW PURPOSES, LEAVE BLANK/COMMENTED OUT OR REDACT
+%%% ENTER ACKNOWLEDGMENTS: FOR REVIEW PURPOSES, LEAVE BLANK/COMMENTED OUT OR REDACT
 \section*{Acknowledgments}
+\label{sec:ack}
+\addcontentsline{toc}{section}{\nameref{sec:ack}}
 I would like to thank . . .
 
 
+%%% REFERENCES
 \bibliography{syntaxbib2022} 
 
-
+%%% APPENDICES, if any
 \section*{Appendix}
-Here is a full list of stimuli used~.~.~.
+\label{sec:appx}
+\addcontentsline{toc}{section}{\nameref{sec:appx}}
+Here is [for example] a full list of stimuli used~.~.~.
 
-
+%%% SUPPORTING INFORMATION, if any; note the two alternate versions needed
 \section*{Supporting information [to be used for the PDF/print version]}
+\label{sec:suppinfo}
+\addcontentsline{toc}{section}{\nameref{sec:suppinfo}}
+
 Supporting information may be found in the online/HTML version of this article. It consists of~.~.~.
 
 \section*{Supporting information [to be used for the online/HTML version]}
@@ -401,6 +451,8 @@ File number & File name & Description\\
 2 & filename-3.txt	& Description of the information\\
 \hline
 \end{tabular}
+
+%%%%END "BACKMATTER"%%%%
 
 
 \end{document}  

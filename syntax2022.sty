@@ -1,7 +1,15 @@
 %%%PLEASE DO NOT ALTER OR CUSTOMIZE THIS STYLE FILE. THANK YOU.
 
 \NeedsTeXFormat{LaTeX2e}[1996/06/01]
-\ProvidesPackage{syntax2022}[2004/12/21 1.0 CHAEL, modified 2005/01/26 iris mulders, appropriated 2008/9/22 david hill,modified 2008/10/1 david hill, overhauled 2021/5/28 david hill]
+\ProvidesPackage{syntax2022}[2021/5/28--2021/6/8 overhauled by David Hill, eliminating all the page-design elements of the earlier version, which traced back to 2004 (CHAEL) and 2005 (Iris Mulders) - exception: the redefinition of the maketitle command was not discarded but modified]
+
+\pagestyle{plain}
+
+\newcommand{\articletype}[1]{\gdef\@thearticletype{#1}}
+
+\newcommand{\articletypelabel}{\@thearticletype}
+
+
 
 
 \RequirePackage{authblk}
@@ -21,42 +29,6 @@
 \RequirePackage{setspace}
 \doublespacing
 
-% NEW DATA-INPUT COMMANDS
-
-%\newcommand{\briefauthor}[1]{\gdef\@briefauthor{#1}}
-%\newcommand{\contactinfo}[1]{\gdef\@contactinfo{#1}}
-%\newcommand{\yourabstract}[1]{\gdef\@yourabstract{#1}}
-%\newcommand{\yourkeywords}[1]{\gdef\@yourkeywords{#1}}
-
-
-% HEADERS AND FOOTERS
-\RequirePackage{fancyhdr}
-\pagestyle{fancy} 
-
-\newcommand{\runninghead}{
-\fancyhead{} % clear all header fields 
-\fancyhead[LE]{\thepage \quad  %some running head text could go here
-} 
-\fancyhead[RO]{%some running head text could go here
- \quad \thepage} 
-\fancyfoot{} % clear all footer fields 
-%\fancyfoot[LE,LO]{\scriptsize \copyright \ 2009 The Author \\ Journal compilation \copyright  \ 2009 Blackwell Publishing Ltd} 
-\renewcommand{\headrulewidth}{0.4pt} 
-\renewcommand{\footrulewidth}{0pt} 
-}
-
-\newcommand{\syntaxfirstpage}[1]{%
-
-\fancypagestyle{plain}{%
-\fancyhead{} 	% clear all header fields
-%\fancyhead[L]{#1}
-%first page volume/page header is suppressed in the review format
-\renewcommand{\headrulewidth}{0.0pt}
-\renewcommand{\footrulewidth}{0.0pt}
-}
-
-\thispagestyle{plain}
-}
 
 
 
@@ -65,73 +37,19 @@
 
 \renewcommand{\maketitle}{
 \begin{flushleft}
-\vspace*{15pt}
+\setlength{\baselineskip}{1.5\baselineskip}
+\articletypelabel
 
 {\Large \bfseries \@title}
 
-{\bfseries \@author}
-%for the rev version, the above line, containing author info, needs to be commented out.
+\@author
 
-\vspace*{15pt}
 \end{flushleft}
 }
 
-% ACKNOWLEDGMENT
-
-%\def\ackfootnote{\xdef\@thefnmark{}\@footnotetext}
 
 
 
-	% SECTION HEADINGS
 
-\renewcommand{\section}{\@startsection{section}{1}{0pt}%
-    {-15pt plus -1ex minus -.2ex}%
-    {1pt plus .2ex}%
-    {\normalfont\bfseries}}
-
-%    \let\@@seccntformat\@seccntformat
-%    \renewcommand*{\@seccntformat}[1]{%
-%      \expandafter\ifx\csname @seccntformat@#1\endcsname\relax
-%        \expandafter\@@seccntformat
-%      \else
-%        \expandafter
-%          \csname @seccntformat@#1\expandafter\endcsname
-%      \fi
-%        {#1}%
-%    }
-    
-%    \newcommand*{\@seccntformat@section}[1]{%
-%  \csname the#1\endcsname.\quad
-%}
-
-\renewcommand{\subsection}{\@startsection{subsection}{2}{0pt}%
-    {-15pt plus -1ex minus -.2ex}%
-    {1pt plus .2ex}%
-    {\normalfont\bfseries}}
-
-\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0pt}%
-    {-15pt plus -1ex minus -.2ex}%
-    {1pt plus .2ex}%
-    {\normalfont\bfseries}}
-
-%\renewcommand{\subsubsection}[1]
-%	{\@startsection{subsubsection}{3}{0pt}%
-%    		{-15pt plus -1ex minus -.2ex}%
-%    		{1pt plus .2ex}%
-%    		{\normalfont}
-%		{\bfseries #1}}
-
-
-% CONTACT INFO
-%\newcommand{\insertcontact}{\section*{Correspondence}\begin{flushleft}\@contactinfo\end{flushleft}}
-%for the rev version:
-%\newcommand{\insertcontact}{ }
-
-% ABSTRACT and KEYWORDS
-%\newcommand{\insertabstract}{\section*{Abstract}\@yourabstract}
-%\newcommand{\insertkeywords}{\section*{Keywords}\@yourkeywords}
-
-
-% enables hypertext features of TeX documents (only works with pdftex)
-\RequirePackage[pdftex,colorlinks,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue]{hyperref}
-%color options are black instead of magenta in the pub format
+% enables hypertext features of TeX documents - additional options called in .tex file with \hypersetup
+\RequirePackage[colorlinks,linkcolor=blue,citecolor=blue,filecolor=blue,urlcolor=blue]{hyperref}
