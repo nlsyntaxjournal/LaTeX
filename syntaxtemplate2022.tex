@@ -10,9 +10,9 @@
 %\hypersetup{dvips}
 %\hypersetup{xetex}
 
-%Margin width -- if you switch the font from Times to Stix below, also switch to narrower margins here:
-\usepackage[margin=1.12in]{geometry}
-%\usepackage[margin=0.98in]{geometry}
+%Margin width -- if you stick with Times fonts below, switch to wider margins here:
+%\usepackage[margin=1.12in]{geometry}
+\usepackage[margin=0.98in]{geometry}
 
 
 
@@ -82,7 +82,7 @@
 %%%%BEGIN DATA-ENTRY BLOCK FOR \MAKETITLE%%%%
 
 
-%%% ENTER ARTICLE TYPE (change to "Regular article" to "Remark" if appropriate)
+%%% ENTER ARTICLE TYPE (change "Regular article" to "Remark" if appropriate)
 \articletype{Regular article}
 
 %%% ENTER TITLE
@@ -201,12 +201,14 @@ Option B: using  \texttt{$\backslash$citealt} for ``textual'' citations of sourc
 
 Natbib's approach to the author--date system imports an APA-like assumption that every citation involves parentheses one way or another: either around the whole citation (\verb|\citep|) or around all but the author's name (\verb|\citet|). As explained in the \href{https://docs.google.com/document/d/1T0zHwq2b53VnqF18c8PKd-W_FWKqhKF0gkbBndoxj28/edit?usp=sharing}{\emph{Syntax} submission instructions}, however, the basic format for citations (not just in \emph{Syntax} but also in other standard variants of linguistic style, such as \emph{Language}'s and \emph{Linguistic Inquiry}'s, that have their roots in Chicago style) is simply \emph{\citealt{journalarticle}}, with no parentheses, as in \emph{See \citealt{journalarticle}}. So, under option A, we specify null parentheses, so that \verb|See \citet| renders the correct output. The drawback of this solution is that it renders \verb|\citep| unusable (its output is identical to that of \verb|\citet|); just insert parentheses wherever they are actually needed. The alternative, used in this document, is option B: use \verb|\citealt| (the parenthesisless alternative to the basic \verb|\citet|) to achieve the parenthesisless look and leave everything else alone.
 
+The command \verb|\citeyearpar| or \verb|\citeyear| is also useful, for suppressing the author name from the citation when the author is already referred to per se in the text. So, for example, the parenthesis in \emph{Firstname Lastname has repeatedly argued (\citeyear{book, journalarticle}, for example) that~.~.~.} is achieved with \verb|(\citeyear{book,journalarticle}, for example)|.
+
 As for BibLaTeX, we do not currently provide a BibLaTeX implementation: you may wish to use \href{https://ctan.org/pkg/biblatex-unified}{Biblatex-unified}, which achieves very similar output. If possible, though, please use  Natbib citation commands in your .tex file (\verb|\usepackage[natbib=true]{biblatex}|), because we will have to convert to BibTeX during copyediting. The main reason we do not support BibLaTeX more fully is that our production process involves generating the final bibitems and embedding them statically in the .tex file; BibLaTeX does not generate such bibitems. Also, developing BibLaTeX competence is nontrivial, while BibTeX appears to be adequate for most purposes and still the choice of most authors.
 
 
 
 \section{Numbered display items, such as examples and structures}\label{secexs}
-This section\footnote{This is the first regular numbered footnote, immediately following the acknowledgment. It is generally best if each section heading is followed by some text, rather than being followed immediately by a (lower-level) section heading. \label{padding}}   gives some sample numbered items using the \emph{Syntax}-recommended package {Linguex}. 
+This section gives some sample numbered items using the \emph{Syntax}-recommended package {Linguex}. 
 
 This section constitutes an incomplete and \emph{Syntax}-centric introduction to {Linguex}. For a fuller introduction, please consult the {Linguex} documentation, available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/linguex/}}.
 
@@ -243,9 +245,6 @@ To attribute both \Last[a] and \Last[b] to the same source, you just need to clo
 \b. Colorless green ideas sleep furiously.
 \z. \citep{journalarticle}
 
-Finally, remember that complete sentences are always capitalized  and closed by a period, as in the examples above, while a phrase is neither capitalized nor punctuated:\footnote{This rule continues to hold for glossed examples as well; see the next section. If examples are written in a transcription that uses capitalization in a contrastive way (for example, \emph{T} for the Hindi voiceless retroflex stop versus \emph{t} for the dental stop) then do not capitalize those examples, but do continue to close complete sentences with a period.}
-
-\ex. colorless green ideas
 
 
 \subsection{Judgments, brackets, and glosses}\label{secjbg}
@@ -263,7 +262,7 @@ Here is an example with labeled bracketing. There is a different macro, \texttt{
 
 \exi. [NP Colorless green ideas] [VP sleep furiously].
 
-And here is an example where some of the brackets are not labeled. It is best not to use \texttt{$\backslash$exi.} in this case, but instead to use the lower-level subscripting macro \texttt{$\backslash$I} for just the labeled brackets.
+And here is an example where some of the brackets are not labeled. It is best not to use \texttt{$\backslash$exi.} in this case but instead to use the lower-level subscripting macro \texttt{$\backslash$I} for just the labeled brackets.
 
 \ex. \I[NP Colorless green ideas] [sleep furiously]. 
 
@@ -338,7 +337,7 @@ Colorless green ideas sleep furiously.
 
 
 
-For glossed examples, there is a bit of a problem, since  \verb|\exg.|, for example, automatically interprets the first line as the sentence to be glossed and the second line as its glosses. A solution, though it's not trouble free, is to use the \verb|g|-less macro and start the glossing environment after the heading, using  \verb|\gll|: 
+For glossed examples, there is a bit of a problem, since  \verb|\exg.|, for example, automatically interprets the first line as the sentence to be glossed and the second line as its glosses; the first line cannot, therefore, be a heading. A solution, though it's not trouble free, is to use the \verb|g|-less macro and start the glossing environment after the heading, using  \verb|\gll|: 
 
 
 \ex. An example involving numerals
@@ -348,7 +347,7 @@ see.\textsc{1sg} six.\textsc{gen} nice.\textsc{gen.pl} boys.\textsc{gen.pl} \\
 
 (Other packages, such as Gb4e, handle this case better.) 
 
-This is a good moment to recall that, though we are using LaTeX, we only using it to generate a text that will serve as input to our publisher's non-LaTeX typesetting process. The above, though ugly, is adequate for that purpose.
+This is a good moment to recall that, though we are using LaTeX, we are only using it to generate a text that will serve as input to our publisher's non-LaTeX typesetting process. The above, though perhaps ugly and unacceptable from a typesetting point of view, is adequate for that purpose.
 
 A device that can be used sparingly (see the \href{https://docs.google.com/document/d/1T0zHwq2b53VnqF18c8PKd-W_FWKqhKF0gkbBndoxj28/edit?usp=sharing}{\emph{Syntax} submission instructions}) is a short right-aligned label on the first line of the example it labels. Typically this is the name of the language from which the example comes. If the example is brief enough to fit on one line (60 characters or less including spaces), then \verb|\hfill| is sufficient to insert the label:
 
@@ -359,8 +358,11 @@ However, with longer examples, \verb|\hfill| either does not work at all (e.g., 
 {
 \raggedright
 \bigskip
-\begin{tabular}{@{}p{4in}@{}p{0.25in}@{}>{\raggedleft\arraybackslash}p{2in}@{}}
-\vspace{-17pt}   %With double spacing: \vspace{-34pt}
+%With Stix-adapted margins:
+\begin{tabular}{@{}p{4.25in}@{}p{0.25in}@{}>{\raggedleft\arraybackslash}p{2in}@{}}
+%With Times-adapted margins:
+%\begin{tabular}{@{}p{4in}@{}p{0.25in}@{}>{\raggedleft\arraybackslash}p{2in}@{}}
+\vspace{-36pt}
 \exg. *An ftasume ar$\gamma$a \textit{pro} $\theta$a tromaksi tin Maria.\\
 if arrive.1\textsc{pl} late {}  \textsc{fut} scare the Mary\\
 Intended: `If we arrive late, it will scare Mary.'  
@@ -383,7 +385,7 @@ Greek
 
 The code \texttt{$\backslash$ref\{NAME\}} produces a (parenthesized) copy of the number of the item that contains the corresponding code \texttt{$\backslash$label\{NAME\}}. It is a good idea to pick short, descriptive label names and to put \texttt{$\backslash$label\{NAME\}} at the \emph{end} of the item whenever possible. In addition, {Linguex} provides the contextually defined macros \texttt{$\backslash$Next}, \texttt{$\backslash$NNext}, \texttt{$\backslash$Last}, and \texttt{$\backslash$LLast}, which allow you to add cross-references in the vicinity of an example without going to the trouble of making a label for it. 
 
-The {Linguex} system enables cross-references of the form \emph{(1), (1a), (1)--(2)}  using the regular \texttt{$\backslash$ref{}} command. Things like \emph{(1a,~b)} and \emph{(1b--d)}  (which are the \emph{Syntax} way of citing multiple subitems) are also possible, but only ``locally,'' for adjacent numbered items, using  \texttt{$\backslash$Next}, \texttt{$\backslash$NNext}, \texttt{$\backslash$Last}, and \texttt{$\backslash$LLast}. For example, at the moment, \Last is the last numbered item; you can use \texttt{$\backslash$Last[b--d]} to get \emph{\Last[b--d]}. (Never mind that those are nonexistent subitems.) To cite multiple subitems of a more distant item, enter the cross-reference manually, as static text.
+The {Linguex} system enables cross-references of the form \emph{(1), (1a), (1)--(2)}  using the regular \texttt{$\backslash$ref{}} command. Things like \emph{(1a,~b)} and \emph{(1b--d)}  (which are the \emph{Syntax} way of citing multiple subitems) are also possible, but only ``locally,'' using  the contextually defined macros. For example, at the moment, \Last is the last numbered item; you can use \texttt{$\backslash$Last[b--d]} to get \emph{\Last[b--d]}. (Never mind that those are nonexistent subitems.) To cite multiple subitems of a more distant item, enter the cross-reference manually, as static text.
 
 
 
@@ -392,13 +394,15 @@ The {Linguex} system enables cross-references of the form \emph{(1), (1a), (1)--
 
 
 \section{Linguistic trees}\label{sectrees}
-This section is very incomplete at present.
+This section is very brief at present.
 
 The package {Qtree}, preloaded in this template along with {Linguex}, generates publication-quality trees from text input. The basic macro is \texttt{$\backslash$Tree}. Here is an example:\footnote{Both in trees and elsewhere, please notate bar levels using the mathematical prime symbol ($^\prime$), rather than the apostrophe (').\label{noteprime}}
 
-\ex.\Tree [.TP Spec [.T$^\prime$ {T} [.vP Subj [.v$^\prime$ v [.VP V Obj ] ] ] ] ]
+\ex.\Tree [.TP specifier [.\phantom{$^\prime$}T$^\prime$ {T} [.vP subject [.\phantom{$^\prime$}v$^\prime$ v [.VP V object ] ] ] ] ]
 
 Trees should, as here, be embedded in a {Linguex} example.  
+
+(Take a look at the source code for \Last to see how to use \verb|\phantom{}| to force prime symbols and other superscripts and subscripts not to count for purposes of center alignment.)
 
 Your use of {Qtree} will depend on various specific factors.  Full documentation for  {Qtree} is available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}}.
 
@@ -414,7 +418,13 @@ Your use of {Qtree} will depend on various specific factors.  Full documentation
 \section*{Data-availability statement}
 \label{sec:datastatement}
 \addcontentsline{toc}{section}{\nameref{sec:datastatement}}
-[Your statement may be some combination of the following sample language, the sample language found \href{https://authorservices.wiley.com/author-resources/Journal-Authors/open-access/data-sharing-citation/data-sharing-policy.html}{on Wiley's website}, and language of your own.] All original data discussed in this article are given explicitly. The original data discussed in this article are available from the corresponding author upon reasonable request. All data discussed in this article have been previously reported in the literature cited.
+[Your statement may be some combination of the following sample language, the sample language found \href{https://authorservices.wiley.com/author-resources/Journal-Authors/open-access/data-sharing-citation/data-sharing-policy.html}{on Wiley's website}, and language of your own.] 
+
+The original data discussed in this article are available from the corresponding author upon reasonable request. 
+
+All original data discussed in this article are given explicitly. 
+
+All data discussed in this article have been previously reported in the literature cited.
 
 
 %%% ENTER ACKNOWLEDGMENTS: FOR REVIEW PURPOSES, LEAVE BLANK/COMMENTED OUT OR REDACT
