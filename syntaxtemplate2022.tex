@@ -394,17 +394,16 @@ The {Linguex} system enables cross-references of the form \emph{(1), (1a), (1)--
 
 
 \section{Linguistic trees}\label{sectrees}
-This section is very brief at present.
+This section is very brief at present. Full documentation for  {Qtree} is available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}}.
 
 The package {Qtree}, preloaded in this template along with {Linguex}, generates publication-quality trees from text input. The basic macro is \texttt{$\backslash$Tree}. Here is an example:\footnote{Both in trees and elsewhere, please notate bar levels using the mathematical prime symbol ($^\prime$), rather than the apostrophe (').\label{noteprime}}
 
-\ex.\Tree [.TP specifier [.\phantom{$^\prime$}T$^\prime$ {T} [.vP subject [.\phantom{$^\prime$}v$^\prime$ v [.VP V object ] ] ] ] ]
+\ex.\Tree [.TP specifier [.T\1 {T} [.vP subject [.v\rlap{$^\prime$} v [.VP V object ] ] ] ] ]
 
 Trees should, as here, be embedded in a {Linguex} example.  
 
-(Take a look at the source code for \Last to see how to use \verb|\phantom{}| to force prime symbols and other superscripts and subscripts not to count for purposes of center alignment.)
+(If you want to know how to force prime symbols and other superscripts and subscripts to ``hang,'' that is, to not count for purposes of center alignment---making trees look subtly much better---the source code for the tree in \Last illustrates two ways to do this. One is to use Qtree's macros \verb|\0| and \verb|\1| (the numbers refer to bar levels) to get X$^0$s and X$^\prime$s that center like Xs. The other, a generalized version of the same technique, uses \verb|\rlap{}| or \verb|\llap{}| to insert a zero-width text box: for example, \verb|X\rlap{$^0$}| for a right-hanging superscript zero, \verb|\llap{*}XP| for a left-hanging asterisk.\footnote{I learned of the Qtree macros from a manuscript I recently edited for \emph{Syntax}; the Qtree documentation explains that these macros rely on \texttt{$\backslash$rlap} and \texttt{$\backslash$llap}.} A third method, inferior to these, though ingenious, is to use \verb|\phantom{}| to insert a null version of the item you want to hang, on the opposite end from it, to cancel out its effect on centering: for example, \verb|\phantom{$^0$}X$^0$|.)
 
-Your use of {Qtree} will depend on various specific factors.  Full documentation for  {Qtree} is available at {\href{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}{http://tug.ctan.org/tex-archive/macros/latex/contrib/qtree/}}.
 
 
 
